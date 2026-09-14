@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Siftion UI";
+  src: url("../assets/SiftionUI-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("../assets/SiftionUI-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("../assets/SiftionUI-Semibold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("../assets/SiftionUI-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --sf-paper: #efeee9;
+  --sf-ink: #151515;
+  --sf-hero: #050505;
+  --sf-hero-ink: #efeee9;
+  --sf-on-signal: #151515;
+  --sf-muted: #6e6d68;
+  --sf-faint: #a5a39b;
+  --sf-line: #c9c7be;
+  --sf-panel: #e3e1d9;
+  --sf-white: #ffffff;
+  --sf-action-primary: var(--sf-signal);
+  --sf-feedback-warning: var(--sf-hot);
+  --sf-surface-raised: var(--sf-panel);
+  --sf-radius-control: .25rem;
+  --sf-radius-panel: 0;
+  --sf-signal: #3f4dff;
+  --sf-hot: #ff6547;
+  --sf-acid: #c9ff36;
+  --sf-violet: #cdbbff;
+  --sf-font: "Siftion UI", ui-sans-serif, system-ui, sans-serif;
+  --sf-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sf-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --sf-max: 1440px;
+  --sf-unit: clamp(.35rem, .7vw, .75rem);
+  --sf-section: clamp(5rem, 12vw, 11rem);
+  --sf-ease: cubic-bezier(.2, .8, .2, 1);
+  --sf-fast: 160ms;
+  --sf-base: 360ms;
+  --sf-slow: 760ms;
+}
+
+[data-mode="night"] {
+  color-scheme: dark;
+  --sf-paper: #151515;
+  --sf-ink: #efeee9;
+  --sf-muted: #aaa89f;
+  --sf-faint: #74736c;
+  --sf-line: #3d3c38;
+  --sf-panel: #22221f;
+  --sf-white: #f6f5f0;
+  --sf-hero: #050505;
+  --sf-hero-ink: #efeee9;
+  --sf-on-signal: #151515;
+}
+
+[data-mode="acid"] {
+  --sf-signal: #ff6547;
+  --sf-hot: #3f4dff;
+  --sf-acid: #151515;
+  --sf-violet: #ffb8df;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --sf-fast: 0ms; --sf-base: 0ms; --sf-slow: 0ms; }
+}
