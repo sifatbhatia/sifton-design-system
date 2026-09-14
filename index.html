@@ -3,78 +3,157 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Siftion UI field system: a portable visual language for digital work.">
-  <title>Siftion UI / Field System</title>
+  <meta name="description" content="Explore Siftion UI through a live type specimen, a purposeful palette, real components, and motion you can play with.">
+  <meta name="theme-color" content="#efeee9">
+  <title>Siftion UI - A design language with room to play</title>
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('siftion-showcase:mode'); } catch (_) { /* Optional persistence. */ }
+      const mode = ['light', 'night'].includes(saved)
+        ? saved
+        : (matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
+      document.documentElement.dataset.mode = mode;
+    })();
+  </script>
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/showcase.css">
+  <script src="scripts/showcase.js" defer></script>
 </head>
-<body>
-  <header class="sf-topbar">
-    <div class="sf-shell sf-topbar__inner">
-      <a class="sf-logo" href="#top">Siftion UI</a>
-      <div class="sf-topbar__meta"><span>Field system / 01</span><button class="sf-mode" type="button" data-mode-toggle>Night mode</button></div>
+<body class="sx-page">
+  <a class="sx-skip" href="#main">Skip to content</a>
+  <svg class="sx-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="sx-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></symbol>
+    <symbol id="sx-diagonal" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
+    <symbol id="sx-down" viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></symbol>
+    <symbol id="sx-replay" viewBox="0 0 24 24"><path d="M5 9a8 8 0 1 1-.5 6M5 3v6h6"/></symbol>
+    <symbol id="sx-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M15 8V4H4v11h4"/></symbol>
+    <symbol id="sx-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="sx-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M20 4l-2 2M6 18l-2 2"/></symbol>
+    <symbol id="sx-moon" viewBox="0 0 24 24"><path d="M20 14.5A9 9 0 0 1 9.5 4a9 9 0 1 0 10.5 10.5Z"/></symbol>
+    <symbol id="sx-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="sx-close" viewBox="0 0 24 24"><path d="m5 5 14 14M5 19 19 5"/></symbol>
+  </svg>
+
+  <header class="sx-header">
+    <div class="sx-shell sx-header-inner">
+      <a class="sx-brand" href="#top" aria-label="Siftion UI home"><span class="sx-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Siftion UI</a>
+      <nav class="sx-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#typography">Typography</a><a href="#color">Color</a><a href="#components">Components</a><a href="#motion">Motion</a>
+      </nav>
+      <div class="sx-header-actions">
+        <a class="sx-source-link" href="https://github.com/sifatbhatia/sifton-design-system">Source <svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></a>
+        <button class="sx-icon-button" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false"><svg class="sx-icon" aria-hidden="true"><use href="#sx-moon"/></svg></button>
+        <button class="sx-icon-button sx-menu-button" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><svg class="sx-icon" aria-hidden="true"><use href="#sx-menu"/></svg></button>
+      </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="sf-hero">
-      <div class="sf-shell sf-hero__content">
-        <div class="sf-hero__eyebrow"><span class="sf-kicker" style="color: inherit">Design system / workbench</span><span class="sf-mono">Portable / 01</span></div>
-        <h1 class="sf-hero__headline">A working language for <em>interfaces.</em></h1>
-        <div class="sf-hero__bottom"><p class="sf-copy">Siftion UI gives digital work a point of view: one type family, a decisive signal, and enough structure to keep every output intentional.</p><div class="sf-crosshair" aria-hidden="true"></div></div>
+  <main id="main" tabindex="-1">
+    <section class="sx-shell sx-hero" id="top" aria-labelledby="hero-title">
+      <div class="sx-hero-eyebrow"><p>A design language with room to play.</p><span>By Sifat Bhatia</span></div>
+      <div class="sx-masthead"><h1 id="hero-title">Siftion<span class="sx-sr-only"> UI</span></h1><div class="sx-ui-stamp" aria-hidden="true"><span>UI</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></div></div>
+      <div class="sx-hero-intro"><p class="sx-hero-statement">Good bones.<br>Endless possibilities.</p><div><p>One type family. A decisive palette. Thoughtful components. A shared starting point for something entirely your own.</p><a class="sx-text-link" href="#typography">Explore the system <svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a></div></div>
+
+      <div class="sx-hero-specimens">
+        <div class="sx-glyph-tile">
+          <div class="sx-tile-top"><span>One family. Four weights.</span><span>Siftion UI</span></div>
+          <span class="sx-hero-glyph" data-hero-glyph aria-hidden="true">Aa</span>
+          <fieldset class="sx-hero-weights"><legend class="sx-sr-only">Hero specimen weight</legend>
+            <label><input type="radio" name="hero-weight" value="400" checked><span>400</span></label>
+            <label><input type="radio" name="hero-weight" value="500"><span>500</span></label>
+            <label><input type="radio" name="hero-weight" value="600"><span>600</span></label>
+            <label><input type="radio" name="hero-weight" value="700"><span>700</span></label>
+          </fieldset>
+        </div>
+        <button class="sx-shape-tile" type="button" data-rearrange aria-pressed="false" aria-label="Rearrange the composition">
+          <span class="sx-tile-top">Same parts. Different possibilities.</span>
+          <span class="sx-flower" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sx-tile-bottom"><span data-rearrange-label>Rearrange</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-replay"/></svg></span>
+        </button>
+        <div class="sx-control-tile">
+          <span class="sx-small">Made for interaction.</span>
+          <p>Less looking.<br>More doing.</p>
+          <div class="sx-hero-action-wrap"><button class="sf-button sf-button--primary" type="button" data-hero-action>Try a button <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><span class="sx-small" data-hero-feedback aria-live="polite">Go ahead. It works.</span></div>
+        </div>
+      </div>
+      <nav class="sx-chapter-nav" aria-label="Explore the design system">
+        <a href="#typography"><span>01</span>Typography<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
+        <a href="#color"><span>02</span>Color<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
+        <a href="#components"><span>03</span>Components<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
+        <a href="#motion"><span>04</span>Motion<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
+      </nav>
+    </section>
+
+    <section class="sx-shell sx-section sx-type-section" id="typography" aria-labelledby="type-title">
+      <div class="sx-section-heading"><div><p class="sx-eyebrow">01 / Typography</p><h2 id="type-title">One family.<br>Every register.</h2></div><p class="sx-description">Quiet in the details. Confident at scale.<br>Siftion UI changes its tone without changing its voice. Give it something to say.</p></div>
+      <div class="sx-type-lab">
+        <div class="sx-type-toolbar">
+          <fieldset class="sx-segmented"><legend class="sx-sr-only">Specimen font weight</legend>
+            <label><input type="radio" name="type-weight" value="400"><span>Regular</span></label><label><input type="radio" name="type-weight" value="500" checked><span>Medium</span></label><label><input type="radio" name="type-weight" value="600"><span>Semibold</span></label><label><input type="radio" name="type-weight" value="700"><span>Bold</span></label>
+          </fieldset>
+          <label class="sx-size-control" for="type-size"><span>Size <output id="type-size-output" for="type-size">116 px</output></span><input id="type-size" type="range" min="32" max="180" value="116" step="1"></label>
+          <button class="sx-icon-button" type="button" data-reset-type aria-label="Reset the type specimen"><svg class="sx-icon" aria-hidden="true"><use href="#sx-replay"/></svg></button>
+        </div>
+        <label class="sx-sr-only" for="type-specimen">Edit the type specimen</label>
+        <textarea class="sx-type-input" id="type-specimen" rows="2" maxlength="180" spellcheck="false" autocapitalize="off" aria-describedby="type-help">Make something
+worth looking at.</textarea>
+        <div class="sx-type-baseline"><span id="type-help">Click the text. Make it yours.</span><span data-type-weight-label>Medium / 500</span></div>
+      </div>
+      <div class="sx-type-roles"><div><span class="sx-small">Display</span><p class="sx-role-display">A point of view.</p></div><div><span class="sx-small">Interface</span><p class="sx-role-interface">Make the next move obvious.</p></div><div><span class="sx-small">Reading</span><p class="sx-role-reading">The best details leave room for the idea. Clear hierarchy, comfortable spacing, and a little restraint.</p></div></div>
+    </section>
+
+    <section class="sx-color-section" id="color" aria-labelledby="color-title">
+      <div class="sx-shell sx-section">
+        <div class="sx-section-heading"><div><p class="sx-eyebrow">02 / Color</p><h2 id="color-title">Give color<br>a purpose.</h2></div><p class="sx-description">A calm foundation. A few unmistakable accents. Explore the base palette, then see what each color brings to a composition.</p></div>
+        <fieldset class="sx-swatches"><legend class="sx-sr-only">Preview a color from the base palette</legend>
+          <label class="sx-swatch" style="--swatch:#efeee9;--swatch-ink:#151515"><input type="radio" name="palette" value="paper"><span class="sx-swatch-face"><span>Paper<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#EFEEE9</span></span></label>
+          <label class="sx-swatch" style="--swatch:#151515;--swatch-ink:#efeee9"><input type="radio" name="palette" value="ink"><span class="sx-swatch-face"><span>Ink<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#151515</span></span></label>
+          <label class="sx-swatch" style="--swatch:#3f4dff;--swatch-ink:#ffffff"><input type="radio" name="palette" value="signal" checked><span class="sx-swatch-face"><span>Signal<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#3F4DFF</span></span></label>
+          <label class="sx-swatch" style="--swatch:#ff6547;--swatch-ink:#151515"><input type="radio" name="palette" value="hot"><span class="sx-swatch-face"><span>Hot<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#FF6547</span></span></label>
+          <label class="sx-swatch" style="--swatch:#c9ff36;--swatch-ink:#151515"><input type="radio" name="palette" value="acid"><span class="sx-swatch-face"><span>Acid<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#C9FF36</span></span></label>
+          <label class="sx-swatch" style="--swatch:#cdbbff;--swatch-ink:#151515"><input type="radio" name="palette" value="violet"><span class="sx-swatch-face"><span>Violet<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#CDBBFF</span></span></label>
+        </fieldset>
+        <div class="sx-color-context">
+          <div class="sx-color-stage" data-color-stage><span class="sx-small" data-color-role>Signal / Action &amp; emphasis</span><p>Make a<br>clear choice.</p><svg class="sx-stage-arrow" aria-hidden="true"><use href="#sx-diagonal"/></svg></div>
+          <div class="sx-color-details"><div><p class="sx-small">In context</p><h3 data-color-name>Signal</h3><p data-color-description>A decisive blue for the action, detail, or idea that deserves your attention.</p></div><div class="sx-token-code"><code data-color-code>--sf-signal: #3f4dff;</code><button class="sx-icon-button" type="button" data-copy-color aria-label="Copy the selected color token"><svg class="sx-icon" aria-hidden="true"><use href="#sx-copy"/></svg></button></div><div class="sx-color-footnote"><span>Preview text contrast</span><span data-color-contrast></span></div><p class="sx-fine-print">Base values stay visible in both themes. Theme-aware tokens remain unchanged.</p></div>
+        </div>
       </div>
     </section>
 
-    <div class="sf-signal-bar" aria-label="System statement"><div class="sf-signal-bar__track"><span>One type family</span><span>Five semantic signals</span><span>No default gradients</span></div></div>
-
-    <section id="foundations" class="sf-shell sf-section">
-      <div class="sf-grid"><div class="sf-section__label"><p class="sf-kicker">02 / Foundations</p><h2 class="sf-title">Color has a job.</h2></div><div class="sf-section__body"><p class="sf-copy">Paper carries the field. Ink carries hierarchy. Signal, hot, acid, and violet are not decoration; each one marks a decision, a state, or a change in temperature.</p></div></div>
-      <div class="sf-palette"><div class="sf-swatch sf-swatch--paper"><span class="sf-swatch__color"></span><span class="sf-swatch__name">Paper</span><span class="sf-swatch__hex">#EFEEE9</span></div><div class="sf-swatch sf-swatch--ink"><span class="sf-swatch__color"></span><span class="sf-swatch__name">Ink</span><span class="sf-swatch__hex">#151515</span></div><div class="sf-swatch sf-swatch--signal"><span class="sf-swatch__color"></span><span class="sf-swatch__name">Signal</span><span class="sf-swatch__hex">#3F4DFF</span></div><div class="sf-swatch sf-swatch--hot"><span class="sf-swatch__color"></span><span class="sf-swatch__name">Hot</span><span class="sf-swatch__hex">#FF6547</span></div><div class="sf-swatch sf-swatch--acid"><span class="sf-swatch__color"></span><span class="sf-swatch__name">Acid</span><span class="sf-swatch__hex">#C9FF36</span></div></div>
+    <section class="sx-shell sx-section" id="components" aria-labelledby="components-title">
+      <div class="sx-section-heading"><div><p class="sx-eyebrow">03 / Components</p><h2 id="components-title">Built to<br>be used.</h2></div><p class="sx-description">Honest controls, useful feedback, and room to think. These are the actual system components. Try them, then take the markup.</p></div>
+      <div class="sx-component-board">
+        <div class="sx-board-toolbar"><div class="sx-tabs" role="tablist" aria-label="Component examples"><button id="tab-buttons" type="button" role="tab" aria-selected="true" aria-controls="panel-buttons" data-tab="buttons">Buttons</button><button id="tab-inputs" type="button" role="tab" aria-selected="false" aria-controls="panel-inputs" tabindex="-1" data-tab="inputs">Inputs</button><button id="tab-states" type="button" role="tab" aria-selected="false" aria-controls="panel-states" tabindex="-1" data-tab="states">Feedback</button></div><span class="sx-small sx-board-note">Live examples</span></div>
+        <div class="sx-component-body">
+          <div class="sx-component-preview">
+            <div id="panel-buttons" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-buttons" tabindex="0">
+              <span class="sx-small">Clear choices. Different priorities.</span><div class="sf-controls sx-button-examples"><button class="sf-button sf-button--primary" type="button" data-demo-button="primary">Continue <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><button class="sf-button sf-button--signal" type="button" data-demo-button="signal">Choose this</button><button class="sf-button sf-button--ghost" type="button" data-demo-button="ghost">Maybe later</button></div><p class="sx-example-caption" data-button-feedback aria-live="polite">Try a button to inspect its markup.</p><span class="sx-small sx-keyboard-hint">Tab to focus. Enter or Space to activate.</span>
+            </div>
+            <div id="panel-inputs" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-inputs" tabindex="0" hidden>
+              <form class="sx-example-form" data-example-form novalidate><label class="sf-field" for="example-name"><span class="sf-mono">Name your idea</span><input id="example-name" type="text" placeholder="Something worth making" maxlength="64" aria-describedby="example-help example-error" required></label><p id="example-help" class="sx-small">Only in this demo. Nothing is sent.</p><p class="sx-form-error" id="example-error" role="alert" hidden>Add a name first.</p><div class="sf-controls"><button class="sf-button sf-button--primary" type="submit">Save example <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><button class="sf-button sf-button--ghost" type="reset">Reset</button></div><p class="sx-example-caption" data-form-feedback aria-live="polite"></p></form>
+            </div>
+            <div id="panel-states" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-states" tabindex="0" hidden><span class="sx-small">Meaning in words, as well as color.</span><span class="sf-status sx-status-example" data-state-preview role="status">Saved</span><fieldset class="sx-segmented sx-state-options"><legend class="sx-sr-only">Preview a feedback state</legend><label><input type="radio" name="feedback-state" value="saved" checked><span>Saved</span></label><label><input type="radio" name="feedback-state" value="attention"><span>Attention</span></label><label><input type="radio" name="feedback-state" value="waiting"><span>Waiting</span></label></fieldset></div>
+          </div>
+          <div class="sx-code-panel"><div><span class="sx-small" data-snippet-label>HTML / Primary button</span><button class="sx-icon-button" type="button" data-copy-component aria-label="Copy component HTML"><svg class="sx-icon" aria-hidden="true"><use href="#sx-copy"/></svg></button></div><pre><code data-component-code>&lt;button class="sf-button
+  sf-button--primary"&gt;
+  Continue
+&lt;/button&gt;</code></pre><p class="sx-small">Existing classes. No framework required.</p></div>
+        </div>
+      </div>
     </section>
 
-    <section id="type" class="sf-shell sf-section">
-      <div class="sf-grid"><div class="sf-section__label"><p class="sf-kicker">03 / Type roles</p><h2 class="sf-title">One voice, tuned by role.</h2></div><div class="sf-section__body"><p class="sf-copy">Siftion UI carries the whole system. Scale, weight, tracking, and line length create hierarchy without asking a second typeface to perform personality.</p></div></div>
-      <div class="sf-type-specimen"><div class="sf-type-line"><span class="sf-type-line__label">Display / 700</span><p class="sf-type-line__sample sf-type-line__sample--tight">A point of<br>view is useful.</p></div><div class="sf-type-line"><span class="sf-type-line__label">Interface / 500</span><p class="sf-type-line__sample">Make the next move obvious.</p></div><div class="sf-type-line"><span class="sf-type-line__label">Reading / 400</span><p class="sf-type-line__sample sf-type-line__sample--small">The system should support the idea, not announce itself before the idea arrives. Let hierarchy do the work.</p></div></div>
+    <section class="sx-shell sx-motion-section" id="motion" aria-labelledby="motion-title">
+      <div class="sx-motion-copy"><p class="sx-eyebrow">04 / Motion</p><h2 id="motion-title">A change<br>with direction.</h2><p class="sx-description">Nothing moves until you give it a reason. The same easing, at three different speeds. Press play. Feel the difference.</p><fieldset class="sx-segmented sx-motion-speeds"><legend class="sx-small">Transition duration</legend><label><input type="radio" name="motion-speed" value="fast"><span>160 ms</span></label><label><input type="radio" name="motion-speed" value="base" checked><span>360 ms</span></label><label><input type="radio" name="motion-speed" value="slow"><span>760 ms</span></label></fieldset><p class="sx-small sx-reduced-note">Reduced motion is on. Changes are immediate.</p></div>
+      <div class="sx-motion-demo" data-motion-demo><div class="sx-motion-stage"><span class="sx-motion-shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="sx-small sx-motion-state" data-motion-state>Together</span></div><div class="sx-motion-footer"><button class="sx-motion-trigger" type="button" data-motion-toggle aria-pressed="false"><span data-motion-label>Separate the shapes</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><span class="sx-small">Shift &amp; respond.</span></div></div>
     </section>
 
-    <section id="controls" class="sf-shell sf-section">
-      <div class="sf-grid"><div class="sf-section__label"><p class="sf-kicker">04 / Controls</p><h2 class="sf-title">Actions should say what happens next.</h2></div><div class="sf-section__body"><p class="sf-copy">The control language is intentionally blunt. Buttons state an outcome, fields leave room for thought, and status is always communicated with language as well as color.</p></div></div>
-      <div class="sf-demo" style="margin-top: 3.5rem"><div class="sf-demo__top"><div class="sf-demo__dots"><i></i><i></i><i></i></div><span class="sf-mono">control group / default</span></div><div class="sf-controls"><button class="sf-button sf-button--primary" type="button" data-demo-action="Change committed">Commit change <span aria-hidden="true">-></span></button><button class="sf-button sf-button--signal" type="button" data-demo-action="Signal selected">Set signal</button><button class="sf-button sf-button--ghost" type="button" data-demo-action="Field reset">Reset field</button><span class="sf-status" data-demo-status aria-live="polite">Ready for input</span><span class="sf-status sf-status--hot">Needs attention</span></div><hr class="sf-rule" style="margin-top: 2rem"><div class="sf-control-row" style="margin-top: 2rem"><label class="sf-field"><span class="sf-mono">Token name</span><input type="text" placeholder="e.g. action-primary"></label><label class="sf-field"><span class="sf-mono">Example value</span><input type="text" placeholder="A specific decision"></label></div></div>
-    </section>
-
-    <section id="patterns" class="sf-shell sf-section">
-      <div class="sf-grid"><div class="sf-section__label"><p class="sf-kicker">05 / Composition</p><h2 class="sf-title">Compose by role, not by template.</h2></div><div class="sf-section__body"><p class="sf-copy">Use the grid as a starting condition. A module can become a dashboard metric, an editorial note, a launch-page callout, or an experiment without losing its underlying logic.</p></div></div>
-      <div class="sf-module-grid" style="margin-top: 3.5rem"><div class="sf-module sf-module--blue"><span class="sf-mono">signal / active</span><strong class="sf-module__value">03:42</strong><span class="sf-module__caption">time in the system</span></div><div class="sf-module sf-module--black"><span class="sf-mono">index / open</span><strong class="sf-module__value">12</strong><span class="sf-module__caption">available fields</span></div></div>
-      <div class="sf-list"><div class="sf-list__item"><span class="sf-list__index">01</span><span class="sf-list__title">Start with one loud decision.</span><span class="sf-list__meta">hierarchy</span></div><div class="sf-list__item"><span class="sf-list__index">02</span><span class="sf-list__title">Pair every state with language.</span><span class="sf-list__meta">signal</span></div><div class="sf-list__item"><span class="sf-list__index">03</span><span class="sf-list__title">Keep the escape hatch visible.</span><span class="sf-list__meta">behavior</span></div></div>
-    </section>
-
-    <section id="motion" class="sf-shell sf-section">
-      <div class="sf-grid"><div class="sf-section__label"><p class="sf-kicker">06 / Motion</p><h2 class="sf-title">Move only when something changes.</h2></div><div class="sf-section__body"><p class="sf-copy">The system has a small motion vocabulary: enter, shift, reveal, respond. Motion should clarify a state change or direct attention, never ask the interface to perform for its own sake.</p></div></div>
-      <button class="sf-motion" type="button" data-motion-toggle aria-pressed="false"><div class="sf-motion__orb"></div><span class="sf-motion__label">press / shift state</span></button>
-    </section>
+    <footer class="sx-footer"><div class="sx-shell"><div class="sx-footer-main"><h2>Go make<br>something yours.</h2><div><p>The foundations are here.<br>The outcome is up to you.</p><a class="sx-text-link" href="https://github.com/sifatbhatia/sifton-design-system">Explore the source <svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></a><a class="sx-text-link" href="tokens.json" download>Get the tokens <svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a></div></div><div class="sx-footer-bottom"><a class="sx-brand" href="#top"><span class="sx-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Siftion UI</a><span>Designed by Sifat Bhatia</span><a href="#top">Back to top <span aria-hidden="true">&#8593;</span></a></div></div></footer>
   </main>
 
-  <footer class="sf-footer"><div class="sf-shell sf-footer__inner"><span>Siftion UI / Field system</span><span>Portable by design</span><span>01 / 01</span></div></footer>
-  <script>
-    (() => {
-      const root = document.documentElement;
-      const toggle = document.querySelector('[data-mode-toggle]');
-      toggle?.addEventListener('click', () => {
-        const night = root.dataset.mode !== 'night';
-        root.dataset.mode = night ? 'night' : 'light';
-        toggle.textContent = night ? 'Light mode' : 'Night mode';
-      });
-      document.querySelectorAll('[data-demo-action]').forEach((button) => button.addEventListener('click', () => {
-        const status = document.querySelector('[data-demo-status]');
-        if (status) status.textContent = button.dataset.demoAction;
-      }));
-      const motion = document.querySelector('[data-motion-toggle]');
-      motion?.addEventListener('click', () => {
-        const active = motion.classList.toggle('is-active');
-        motion.setAttribute('aria-pressed', String(active));
-        motion.querySelector('.sf-motion__label').textContent = active ? 'press / return state' : 'press / shift state';
-      });
-    })();
-  </script>
+  <div class="sx-toast" role="status" aria-live="polite" aria-atomic="true" data-toast></div>
+  <dialog class="sx-copy-dialog" data-copy-dialog aria-labelledby="copy-dialog-title"><div><h2 id="copy-dialog-title">Copy this snippet</h2><button class="sx-icon-button" type="button" data-close-dialog aria-label="Close copy dialog"><svg class="sx-icon" aria-hidden="true"><use href="#sx-close"/></svg></button></div><p>Clipboard access is unavailable. Select and copy the text below.</p><label class="sx-sr-only" for="manual-copy">Snippet to copy</label><textarea id="manual-copy" rows="8" readonly></textarea><button class="sf-button sf-button--primary" type="button" data-close-dialog>Done</button></dialog>
+  <noscript><p class="sx-noscript">The system is here to explore. Turn on JavaScript to use the live controls, theme switch, and copy buttons.</p></noscript>
 </body>
 </html>
