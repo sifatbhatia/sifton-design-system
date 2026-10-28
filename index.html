@@ -1,159 +1,1528 @@
 <!doctype html>
-<html lang="en" data-mode="light">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore Siftion UI through a live type specimen, a purposeful palette, real components, and motion you can play with.">
-  <meta name="theme-color" content="#efeee9">
-  <title>Siftion UI - A design language with room to play</title>
-  <script>
-    (() => {
-      let saved;
-      try { saved = localStorage.getItem('siftion-showcase:mode'); } catch (_) { /* Optional persistence. */ }
-      const mode = ['light', 'night'].includes(saved)
-        ? saved
-        : (matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
-      document.documentElement.dataset.mode = mode;
-    })();
-  </script>
-  <link rel="stylesheet" href="styles/tokens.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <link rel="stylesheet" href="styles/showcase.css">
-  <script src="scripts/showcase.js" defer></script>
-</head>
-<body class="sx-page">
-  <a class="sx-skip" href="#main">Skip to content</a>
-  <svg class="sx-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="sx-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></symbol>
-    <symbol id="sx-diagonal" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
-    <symbol id="sx-down" viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></symbol>
-    <symbol id="sx-replay" viewBox="0 0 24 24"><path d="M5 9a8 8 0 1 1-.5 6M5 3v6h6"/></symbol>
-    <symbol id="sx-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M15 8V4H4v11h4"/></symbol>
-    <symbol id="sx-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-    <symbol id="sx-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M20 4l-2 2M6 18l-2 2"/></symbol>
-    <symbol id="sx-moon" viewBox="0 0 24 24"><path d="M20 14.5A9 9 0 0 1 9.5 4a9 9 0 1 0 10.5 10.5Z"/></symbol>
-    <symbol id="sx-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
-    <symbol id="sx-close" viewBox="0 0 24 24"><path d="m5 5 14 14M5 19 19 5"/></symbol>
-  </svg>
+<html lang="en" data-mode="night">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Siftion UI: custom type, four colors, and a working library of controls and motion. Try the examples and copy their implementation."
+    />
+    <meta name="theme-color" content="#151515" />
+    <title>Siftion UI | Type, components &amp; motion</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <meta
+      property="og:title"
+      content="Siftion UI | Type, components &amp; motion"
+    />
+    <meta
+      property="og:description"
+      content="A working design system by Sifat Bhatia. Test the type, explore the components, and copy the source."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="assets/social-card.png" />
+    <script>
+      (() => {
+        let saved;
+        try {
+          saved = localStorage.getItem('siftion-showcase:mode');
+        } catch (_) {
+          /* Optional persistence. */
+        }
+        const mode = ['light', 'night'].includes(saved) ? saved : 'night';
+        document.documentElement.dataset.mode = mode;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/showcase.css" />
+    <link rel="stylesheet" href="styles/library.css" />
+    <link rel="stylesheet" href="styles/navigation.css" />
+    <script src="scripts/library.js" defer></script>
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/showcase.js" defer></script>
+  </head>
+  <body class="sx-page">
+    <a class="sx-skip" href="#main">skip to content</a>
+    <svg
+      class="sx-sprite"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <symbol id="sx-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h15M13 5l7 7-7 7" />
+      </symbol>
+      <symbol id="sx-diagonal" viewBox="0 0 24 24">
+        <path d="M5 19 19 5M5 5h14v14" />
+      </symbol>
+      <symbol id="sx-down" viewBox="0 0 24 24">
+        <path d="M12 4v16M5 13l7 7 7-7" />
+      </symbol>
+      <symbol id="sx-replay" viewBox="0 0 24 24">
+        <path d="M5 9a8 8 0 1 1-.5 6M5 3v6h6" />
+      </symbol>
+      <symbol id="sx-copy" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="12" height="12" rx="1" />
+        <path d="M15 8V4H4v11h4" />
+      </symbol>
+      <symbol id="sx-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="sx-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M20 4l-2 2M6 18l-2 2"
+        />
+      </symbol>
+      <symbol id="sx-moon" viewBox="0 0 24 24">
+        <path d="M20 14.5A9 9 0 0 1 9.5 4a9 9 0 1 0 10.5 10.5Z" />
+      </symbol>
+      <symbol id="sx-menu" viewBox="0 0 24 24">
+        <g fill="currentColor" stroke="none">
+          <circle cx="5" cy="5" r="1.7" />
+          <circle cx="12" cy="5" r="1.7" />
+          <circle cx="19" cy="5" r="1.7" />
+          <circle cx="5" cy="12" r="1.7" />
+          <circle cx="12" cy="12" r="1.7" />
+          <circle cx="19" cy="12" r="1.7" />
+          <circle cx="5" cy="19" r="1.7" />
+          <circle cx="12" cy="19" r="1.7" />
+          <circle cx="19" cy="19" r="1.7" />
+        </g>
+      </symbol>
+      <symbol id="sx-close" viewBox="0 0 24 24">
+        <path d="m5 5 14 14M5 19 19 5" />
+      </symbol>
+    </svg>
 
-  <header class="sx-header">
-    <div class="sx-shell sx-header-inner">
-      <a class="sx-brand" href="#top" aria-label="Siftion UI home"><span class="sx-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Siftion UI</a>
-      <nav class="sx-nav" id="site-nav" aria-label="Main navigation">
-        <a href="#typography">Typography</a><a href="#color">Color</a><a href="#components">Components</a><a href="#motion">Motion</a>
-      </nav>
-      <div class="sx-header-actions">
-        <a class="sx-source-link" href="https://github.com/sifatbhatia/sifton-design-system">Source <svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></a>
-        <button class="sx-icon-button" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false"><svg class="sx-icon" aria-hidden="true"><use href="#sx-moon"/></svg></button>
-        <button class="sx-icon-button sx-menu-button" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><svg class="sx-icon" aria-hidden="true"><use href="#sx-menu"/></svg></button>
+    <header class="sx-header">
+      <div class="sx-shell sx-header-inner">
+        <a class="sx-brand" href="#top" aria-label="Siftion UI home"
+          >Siftion UI</a
+        >
+        <nav class="sx-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#typography">typography</a><a href="#color">color</a
+          ><a href="#components">components</a><a href="#motion">motion</a>
+        </nav>
+        <div class="sx-header-actions">
+          <a
+            class="sx-source-link"
+            href="https://github.com/sifatbhatia/sifton-design-system"
+            >source
+            <svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-diagonal" /></svg
+          ></a>
+          <button
+            class="sx-icon-button"
+            type="button"
+            data-theme-toggle
+            aria-label="Use dark theme"
+            aria-pressed="false"
+          >
+            <svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-moon" />
+            </svg>
+          </button>
+          <button
+            class="sx-icon-button sx-menu-button"
+            type="button"
+            data-menu-toggle
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-menu" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="sx-shell sx-hero" id="top" aria-labelledby="hero-title">
+        <div class="sx-hero-eyebrow">
+          <p>A working design system</p>
+          <span>By Sifat Bhatia</span>
+        </div>
+        <div
+          class="sx-hero-specimens"
+          aria-label="Interactive system specimens"
+        >
+          <article class="sx-glyph-tile sx-rail-item">
+            <div class="sx-tile-top">
+              <span>01 / Type specimen</span><span>v1.100</span>
+            </div>
+            <span class="sx-hero-glyph" data-hero-glyph aria-hidden="true"
+              >Aa</span
+            >
+            <fieldset class="sx-hero-weights">
+              <legend class="sx-sr-only">Hero specimen weight</legend>
+              <label
+                ><input
+                  type="radio"
+                  name="hero-weight"
+                  value="400"
+                  checked
+                /><span>400</span></label
+              >
+              <label
+                ><input type="radio" name="hero-weight" value="500" /><span
+                  >500</span
+                ></label
+              >
+              <label
+                ><input type="radio" name="hero-weight" value="600" /><span
+                  >600</span
+                ></label
+              >
+              <label
+                ><input type="radio" name="hero-weight" value="700" /><span
+                  >700</span
+                ></label
+              >
+            </fieldset>
+            <div class="sx-hero-action-wrap">
+              <button class="sx-specimen-next" type="button" data-hero-action>
+                Next specimen
+                <svg class="sx-icon" aria-hidden="true">
+                  <use href="#sx-arrow" />
+                </svg></button
+              ><span class="sx-small" data-hero-feedback aria-live="polite"
+                >Letters, numbers, punctuation</span
+              >
+            </div>
+          </article>
+          <article class="sx-reading-tile sx-rail-item">
+            <div class="sx-tile-top">
+              <span>02 / Editorial layout</span><span>Regular · 400</span>
+            </div>
+            <div class="sx-reading-preview">
+              <span class="sx-small">Notes on the system</span>
+              <h2>Space to<br />read.</h2>
+              <p>
+                One family for headlines, captions, and everything in between.
+              </p>
+            </div>
+            <a class="sx-text-link" href="#typography"
+              >Test your own text
+              <svg class="sx-icon" aria-hidden="true">
+                <use href="#sx-arrow" /></svg
+            ></a>
+          </article>
+          <button
+            class="sx-shape-tile sx-rail-item"
+            type="button"
+            data-rearrange
+            aria-pressed="false"
+            aria-label="Rearrange the composition"
+          >
+            <span class="sx-tile-top">03 / Layout transition</span>
+            <span class="sx-layout-preview"
+              ><span><small>01</small>Typography</span
+              ><span><small>02</small>Components</span
+              ><span><small>03</small>Motion</span></span
+            >
+            <span class="sx-tile-bottom"
+              ><span data-rearrange-label>Change the layout</span
+              ><svg class="sx-icon" aria-hidden="true">
+                <use href="#sx-replay" /></svg
+            ></span>
+          </button>
+        </div>
+        <div class="sx-hero-intro">
+          <p>
+            Custom type, reusable controls, and motion.<br />Explore the
+            examples. Take the implementation.
+          </p>
+          <a class="sx-text-link" href="#components"
+            >Browse components
+            <svg class="sx-icon" aria-hidden="true"><use href="#sx-down" /></svg
+          ></a>
+        </div>
+        <div class="sx-masthead">
+          <h1 id="hero-title">Siftion<span class="sx-sr-only"> UI</span></h1>
+          <span class="sx-ui-stamp" aria-hidden="true">UI</span>
+        </div>
+        <nav class="sx-chapter-nav" aria-label="Explore the design system">
+          <a href="#typography"
+            ><span>01</span>typography<svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-down" /></svg
+          ></a>
+          <a href="#color"
+            ><span>02</span>color<svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-down" /></svg
+          ></a>
+          <a href="#components"
+            ><span>03</span>components<svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-down" /></svg
+          ></a>
+          <a href="#motion"
+            ><span>04</span>motion<svg class="sx-icon" aria-hidden="true">
+              <use href="#sx-down" /></svg
+          ></a>
+        </nav>
+      </section>
+
+      <section
+        class="sx-shell sx-section sx-type-section"
+        id="typography"
+        aria-labelledby="type-title"
+      >
+        <div class="sx-section-heading">
+          <div>
+            <p class="sx-eyebrow">01 typography</p>
+            <h2 id="type-title">One family.<br />Four weights.</h2>
+          </div>
+          <p class="sx-description">
+            Siftion UI, version 1.100. Four native weights from 400 to 700.
+            Adjust the specimen size or enter your own text.
+          </p>
+        </div>
+        <div class="sx-type-lab">
+          <div class="sx-type-toolbar">
+            <fieldset class="sx-segmented">
+              <legend class="sx-sr-only">specimen font weight</legend>
+              <label
+                ><input type="radio" name="type-weight" value="400" /><span
+                  >regular</span
+                ></label
+              ><label
+                ><input
+                  type="radio"
+                  name="type-weight"
+                  value="500"
+                  checked
+                /><span>medium</span></label
+              ><label
+                ><input type="radio" name="type-weight" value="600" /><span
+                  >semibold</span
+                ></label
+              ><label
+                ><input type="radio" name="type-weight" value="700" /><span
+                  >bold</span
+                ></label
+              >
+            </fieldset>
+            <label class="sx-size-control" for="type-size"
+              ><span
+                >size
+                <output id="type-size-output" for="type-size"
+                  >116 px</output
+                ></span
+              ><input
+                id="type-size"
+                type="range"
+                min="32"
+                max="180"
+                value="116"
+                step="1"
+            /></label>
+            <button
+              class="sx-icon-button"
+              type="button"
+              data-reset-type
+              aria-label="Reset the type specimen"
+            >
+              <svg class="sx-icon" aria-hidden="true">
+                <use href="#sx-replay" />
+              </svg>
+            </button>
+          </div>
+          <label class="sx-sr-only" for="type-specimen"
+            >edit the type specimen</label
+          >
+          <textarea
+            class="sx-type-input"
+            id="type-specimen"
+            rows="2"
+            maxlength="180"
+            spellcheck="false"
+            autocapitalize="off"
+            aria-describedby="type-help"
+          >
+Ideas into
+interfaces.</textarea
+          >
+          <div class="sx-type-baseline">
+            <span id="type-help">type here to test your own words.</span
+            ><span data-type-weight-label>medium / 500</span>
+          </div>
+        </div>
+        <div class="sx-type-roles">
+          <div>
+            <span class="sx-small">display</span>
+            <p class="sx-role-display">A headline worth reading.</p>
+          </div>
+          <div>
+            <span class="sx-small">interface</span>
+            <p class="sx-role-interface">Your draft is ready to review.</p>
+          </div>
+          <div>
+            <span class="sx-small">reading</span>
+            <p class="sx-role-reading">
+              Use Regular for longer passages. A comfortable line height and a
+              limited measure keep paragraphs readable, at every screen size.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="sx-color-section"
+        id="color"
+        aria-labelledby="color-title"
+      >
+        <div class="sx-shell sx-section">
+          <div class="sx-section-heading">
+            <div>
+              <p class="sx-eyebrow">02 color</p>
+              <h2 id="color-title">Color with<br />a purpose.</h2>
+            </div>
+            <p class="sx-description">
+              Paper and Ink hold the layout. Signal marks the next action or a
+              selected control. Hot flags a warning. The colors stay fixed in
+              both themes.
+            </p>
+          </div>
+          <fieldset class="sx-swatches">
+            <legend class="sx-sr-only">
+              preview a color from the base palette
+            </legend>
+            <label
+              class="sx-swatch"
+              style="--swatch: #efeee9; --swatch-ink: #151515"
+              ><input type="radio" name="palette" value="paper" /><span
+                class="sx-swatch-face"
+                ><span
+                  >paper<svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-check" /></svg></span
+                ><span>#efeee9</span></span
+              ></label
+            >
+            <label
+              class="sx-swatch"
+              style="--swatch: #151515; --swatch-ink: #efeee9"
+              ><input type="radio" name="palette" value="ink" /><span
+                class="sx-swatch-face"
+                ><span
+                  >ink<svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-check" /></svg></span
+                ><span>#151515</span></span
+              ></label
+            >
+            <label
+              class="sx-swatch"
+              style="--swatch: #3f4dff; --swatch-ink: #ffffff"
+              ><input type="radio" name="palette" value="signal" checked /><span
+                class="sx-swatch-face"
+                ><span
+                  >signal<svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-check" /></svg></span
+                ><span>#3f4dff</span></span
+              ></label
+            >
+            <label
+              class="sx-swatch"
+              style="--swatch: #ff6547; --swatch-ink: #151515"
+              ><input type="radio" name="palette" value="hot" /><span
+                class="sx-swatch-face"
+                ><span
+                  >hot<svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-check" /></svg></span
+                ><span>#ff6547</span></span
+              ></label
+            >
+          </fieldset>
+          <div class="sx-color-context">
+            <div class="sx-color-stage" data-color-stage>
+              <span class="sx-small" data-color-role
+                >signal / action &amp; emphasis</span
+              >
+              <p>Text in<br />context.</p>
+              <svg class="sx-stage-arrow" aria-hidden="true">
+                <use href="#sx-diagonal" />
+              </svg>
+            </div>
+            <div class="sx-color-details">
+              <div>
+                <p class="sx-small">in context</p>
+                <h3 data-color-name>signal</h3>
+                <p data-color-description>
+                  blue for the next action. pair it with white text, not ink, at
+                  small sizes.
+                </p>
+              </div>
+              <div class="sx-token-code">
+                <code data-color-code>--sf-signal: #3f4dff;</code
+                ><button
+                  class="sx-icon-button"
+                  type="button"
+                  data-copy-color
+                  aria-label="Copy the selected color token"
+                >
+                  <svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-copy" />
+                  </svg>
+                </button>
+              </div>
+              <div class="sx-color-footnote">
+                <span>preview text contrast</span
+                ><span data-color-contrast></span>
+              </div>
+              <p class="sx-fine-print">
+                four base colors. the same values in either theme.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="sx-shell sx-section"
+        id="components"
+        aria-labelledby="components-title"
+      >
+        <div class="sx-section-heading">
+          <div>
+            <p class="sx-eyebrow">03 components</p>
+            <h2 id="components-title">The working<br />components.</h2>
+          </div>
+          <p class="sx-description">
+            Signal for action and selection. Hot for warnings and choices that
+            need care. Everything else stays quiet. Try a state, then take its
+            source.
+          </p>
+        </div>
+        <div class="sx-component-board" data-component-workspace data-sf-tabs>
+          <div class="sx-board-toolbar">
+            <div
+              class="sx-tabs"
+              role="tablist"
+              aria-label="Component examples"
+              aria-orientation="vertical"
+             data-sf-tablist>
+              <button
+                id="tab-buttons"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-buttons"
+                data-tab="buttons"
+               data-sf-tab>
+                buttons</button
+              ><button
+                id="tab-inputs"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-inputs"
+                tabindex="-1"
+                data-tab="inputs"
+               data-sf-tab>
+                inputs</button
+              ><button
+                id="tab-states"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-states"
+                tabindex="-1"
+                data-tab="states"
+               data-sf-tab>
+                feedback</button
+              ><button
+                id="tab-choices"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-choices"
+                tabindex="-1"
+                data-tab="choices"
+               data-sf-tab>
+                choices</button
+              ><button
+                id="tab-disclosure"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-disclosure"
+                tabindex="-1"
+                data-tab="disclosure"
+               data-sf-tab>
+                disclosure</button
+              ><button
+                id="tab-dialog"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-dialog"
+                tabindex="-1"
+                data-tab="dialog"
+               data-sf-tab>
+                dialog</button
+              ><button
+                id="tab-undo"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-undo"
+                tabindex="-1"
+                data-tab="undo"
+               data-sf-tab>
+                undo
+              </button>
+              <button id="tab-tabs" type="button" role="tab" aria-selected="false" aria-controls="panel-tabs" tabindex="-1" data-tab="tabs" data-sf-tab>tabs</button>
+
+              <button id="tab-menu" type="button" role="tab" aria-selected="false" aria-controls="panel-menu" tabindex="-1" data-tab="menu" data-sf-tab>action menu</button>
+</div>
+            <span class="sx-small sx-board-note"
+              >Use arrow keys to browse. Source is available below each
+              example.</span
+            >
+          </div>
+          <div class="sx-component-body">
+            <div class="sx-component-preview">
+              <div
+                id="panel-buttons"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-buttons"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sx-component-intro">
+                  <h3>Actions</h3>
+                  <p>
+                    One primary action at a time. Alternatives stay neutral;
+                    progress uses Signal without becoming another primary
+                    button.
+                  </p>
+                </div>
+                <div class="sf-action-sheet" data-sf-example>
+                  <div class="sf-action-row">
+                    <div>
+                      <span class="sf-caption">primary action</span>
+                      <p class="sf-action-guidance">Signal · the next step</p>
+                    </div>
+                    <button
+                      class="sf-button sf-button--primary"
+                      type="button"
+                      data-demo-button="primary"
+                    >
+                      <span>continue</span
+                      ><span class="sf-button__cap" aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                  <div class="sf-action-row">
+                    <div>
+                      <span class="sf-caption">secondary action</span>
+                      <p class="sf-action-guidance">Neutral · another path</p>
+                    </div>
+                    <button
+                      class="sf-button sf-button--secondary"
+                      type="button"
+                      data-demo-button="signal"
+                    >
+                      <span>view the draft</span
+                      ><span aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                  <div class="sf-action-row">
+                    <div><span class="sf-caption">text action</span></div>
+                    <button
+                      class="sf-button sf-button--ghost"
+                      type="button"
+                      data-demo-button="ghost"
+                    >
+                      <span>read the notes</span
+                      ><span aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                  <div class="sf-action-row">
+                    <div><span class="sf-caption">icon action</span></div>
+                    <button
+                      class="sf-button sf-button--icon"
+                      type="button"
+                      data-demo-button="icon"
+                      aria-label="inspect icon action"
+                    >
+                      <span aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                  <div class="sf-action-row">
+                    <div><span class="sf-caption">local save</span></div>
+                    <button
+                      class="sf-button sf-button--async"
+                      type="button"
+                      data-sf-async
+                      data-demo-button="async"
+                    >
+                      <span data-sf-async-label>save draft</span
+                      ><span class="sf-button__cap" aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                  <p class="sf-caption" role="status" data-sf-async-status>
+                    save runs locally for this example.
+                  </p>
+                  <button class="sf-button" type="button" disabled>
+                    unavailable
+                  </button>
+                </div>
+                <p
+                  class="sx-example-caption"
+                  data-button-feedback
+                  aria-live="polite"
+                >
+                  Select an action to inspect its source.
+                </p>
+              </div>
+              <div
+                id="panel-inputs"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-inputs"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sx-component-intro">
+                  <h3>Input</h3>
+                  <p>
+                    Signal shows focus. Hot marks what needs fixing, with a
+                    message that explains why.
+                  </p>
+                </div>
+                <form class="sx-example-form sf-form" data-sf-example data-sf-form data-example-form novalidate>
+  <div class="sf-field">
+    <label class="sf-field__label" for="example-name">draft title</label>
+    <input
+      id="example-name"
+      name="title"
+      data-sf-input
+      type="text"
+      placeholder="a working title"
+      maxlength="64"
+      aria-describedby="example-help example-error"
+      required
+    />
+    <p id="example-help" class="sf-field__help">required. up to 64 characters.</p>
+    <p id="example-error" class="sf-field__error" data-sf-error role="alert" hidden>add a title before saving this example.</p>
+  </div>
+
+  <fieldset class="sf-field-group">
+    <legend>draft details</legend>
+    <div class="sf-field-grid">
+      <div class="sf-field">
+        <label class="sf-field__label" for="example-kind">draft type</label>
+        <select id="example-kind" name="kind" aria-describedby="example-kind-help">
+          <option value="note">note</option>
+          <option value="article">article</option>
+          <option value="project">project</option>
+        </select>
+        <p id="example-kind-help" class="sf-field__help">choose the format that fits your draft.</p>
+      </div>
+      <div class="sf-field">
+        <label class="sf-field__label" for="example-destination">destination <span class="sf-field__optional">read-only</span></label>
+        <input id="example-destination" name="destination" type="text" value="local example" readonly aria-describedby="example-destination-help" />
+        <p id="example-destination-help" class="sf-field__help">no account or server is connected.</p>
       </div>
     </div>
-  </header>
+    <div class="sf-field">
+      <label class="sf-field__label" for="example-description">description <span class="sf-field__optional">optional</span></label>
+      <textarea
+        id="example-description"
+        name="description"
+        rows="3"
+        maxlength="320"
+        placeholder="what is this draft about?"
+        aria-describedby="example-description-help"
+      ></textarea>
+      <p id="example-description-help" class="sf-field__help">up to 320 characters. resize the field if you need more room.</p>
+    </div>
+  </fieldset>
 
-  <main id="main" tabindex="-1">
-    <section class="sx-shell sx-hero" id="top" aria-labelledby="hero-title">
-      <div class="sx-hero-eyebrow"><p>A design language with room to play.</p><span>By Sifat Bhatia</span></div>
-      <div class="sx-masthead"><h1 id="hero-title">Siftion<span class="sx-sr-only"> UI</span></h1><div class="sx-ui-stamp" aria-hidden="true"><span>UI</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></div></div>
-      <div class="sx-hero-intro"><p class="sx-hero-statement">Good bones.<br>Endless possibilities.</p><div><p>One type family. A decisive palette. Thoughtful components. A shared starting point for something entirely your own.</p><a class="sx-text-link" href="#typography">Explore the system <svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a></div></div>
+  <div class="sf-form__footer">
+    <div class="sf-controls">
+      <button class="sf-button sf-button--primary" type="submit">save example <span class="sf-button__cap" aria-hidden="true">↗</span></button>
+      <button class="sf-button sf-button--ghost" type="reset">reset fields</button>
+    </div>
+    <p class="sf-caption">local example only. nothing is sent or kept after reload.</p>
+    <p data-form-feedback data-sf-form-status role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+</form>
+              </div>
+              <div
+                id="panel-states"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-states"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sf-feedback-demo" data-sf-example data-sf-feedback>
+                  <div class="sf-setting">
+                    <h3>Feedback</h3>
+                    <p class="sf-caption">
+                      Confirmation stays neutral. Hot is reserved for a warning,
+                      never a decoration.
+                    </p>
+                  </div>
+                  <span
+                    class="sf-status sx-status-example"
+                    data-state-preview
+                    data-sf-feedback-status
+                    data-state="saved"
+                    role="status"
+                    >saved locally</span
+                  >
+                  <p class="sf-caption" data-sf-feedback-detail>
+                    The local example is up to date. No further action needed.
+                  </p>
+                  <fieldset class="sx-segmented sx-state-options sf-segment">
+                    <legend class="sx-sr-only">preview a feedback state</legend>
+                    <label
+                      ><input
+                        type="radio"
+                        name="feedback-state"
+                        value="saved"
+                        checked
+                      /><span>saved</span></label
+                    ><label
+                      ><input
+                        type="radio"
+                        name="feedback-state"
+                        value="attention"
+                      /><span>attention</span></label
+                    ><label
+                      ><input
+                        type="radio"
+                        name="feedback-state"
+                        value="waiting"
+                      /><span>waiting</span></label
+                    >
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                id="panel-choices"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-choices"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sf-preferences" data-sf-example>
+                  <div class="sf-setting">
+                    <div>
+                      <h3>reading preferences</h3>
+                      <p class="sf-caption">
+                        native choices. use space to toggle, arrow keys to
+                        select.
+                      </p>
+                    </div>
+                  </div>
+                  <label class="sf-switch"
+                    ><span>email me reading reminders</span
+                    ><input type="checkbox" role="switch" /><span
+                      class="sf-switch__track"
+                      aria-hidden="true"
+                    ></span
+                  ></label>
+                  <label class="sf-switch"
+                    ><span
+                      >team reminders
+                      <small>unavailable in this demo</small></span
+                    ><input type="checkbox" role="switch" disabled /><span
+                      class="sf-switch__track"
+                      aria-hidden="true"
+                    ></span
+                  ></label>
+                  <fieldset class="sf-choices">
+                    <legend>include in the reading list</legend>
+                    <label
+                      ><input type="checkbox" value="essays" checked /><span
+                        >essays</span
+                      ></label
+                    ><label
+                      ><input type="checkbox" value="notes" /><span
+                        >notes</span
+                      ></label
+                    ><label
+                      ><input type="checkbox" value="interviews" /><span
+                        >interviews</span
+                      ></label
+                    >
+                  </fieldset>
+                  <fieldset class="sf-segment">
+                    <legend>list density</legend>
+                    <div class="sf-segment__track">
+                      <label
+                        ><input
+                          type="radio"
+                          name="density"
+                          value="comfortable"
+                          checked
+                        /><span>comfortable</span></label
+                      ><label
+                        ><input
+                          type="radio"
+                          name="density"
+                          value="compact"
+                        /><span>compact</span></label
+                      >
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                id="panel-disclosure"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-disclosure"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sf-disclosures" data-sf-example>
+                  <details class="sf-disclosure" open>
+                    <summary>what comes with a pattern?</summary>
+                    <div>
+                      <p>
+                        the markup in this panel, shared styles, and a small
+                        initializer for behaviors that need javascript. native
+                        choices and disclosures need no script.
+                      </p>
+                    </div>
+                  </details>
+                  <details class="sf-disclosure">
+                    <summary>can i use more than one?</summary>
+                    <div>
+                      <p>
+                        yes. give each instance unique ids and radio names. call
+                        SiftionUI.init(container) after adding it. existing
+                        controls will not bind twice.
+                      </p>
+                    </div>
+                  </details>
+                  <details class="sf-disclosure">
+                    <summary>what happens without motion?</summary>
+                    <div>
+                      <p>
+                        the same state change, without the travel. no
+                        information depends on an animation finishing.
+                      </p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div
+                id="panel-dialog"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-dialog"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div
+                  class="sf-dialog-demo"
+                  data-sf-example
+                  data-sf-dialog-group
+                >
+                  <h3>review before closing</h3>
+                  <p class="sf-caption">
+                    a native modal keeps focus inside. escape closes it and
+                    returns you here.
+                  </p>
+                  <button
+                    class="sf-button sf-button--primary"
+                    type="button"
+                    data-sf-dialog-open
+                  >
+                    <span>review draft</span
+                    ><span class="sf-button__cap" aria-hidden="true">↗</span>
+                  </button>
+                  <dialog
+                    class="sf-dialog"
+                    aria-labelledby="draft-dialog-title"
+                  >
+                    <form method="dialog">
+                      <span class="sf-caption">local example</span>
+                      <h2 id="draft-dialog-title">leave this draft?</h2>
+                      <p>
+                        this only closes the preview. your field example stays
+                        as it is.
+                      </p>
+                      <div class="sf-controls">
+                        <button
+                          class="sf-button sf-button--primary"
+                          value="keep"
+                          autofocus
+                        >
+                          keep editing</button
+                        ><button
+                          class="sf-button sf-button--ghost"
+                          value="close"
+                        >
+                          close preview
+                        </button>
+                      </div>
+                    </form>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                id="panel-undo"
+                class="sx-tab-panel"
+                role="tabpanel"
+                aria-labelledby="tab-undo"
+                tabindex="0"
+               data-sf-tabpanel>
+                <div class="sx-component-intro">
+                  <h3>Reversible removal</h3>
+                  <p>Remove a note, then bring it back. Undo stays available until you dismiss the receipt. Nothing changes outside this example.</p>
+                </div>
+                <div class="sf-undo-demo" data-sf-example data-sf-undo>
+  <article class="sf-undo__row" data-sf-undo-item aria-labelledby="undo-entry-title">
+    <div class="sf-undo__content">
+      <p class="sf-undo__eyebrow">reading list / 01</p>
+      <h3 id="undo-entry-title" class="sf-undo__title" data-sf-undo-title>a note on spacing</h3>
+      <p class="sf-undo__meta"><span>design notes</span><span>saved in this example</span></p>
+    </div>
+    <div class="sf-undo__actions">
+      <button class="sf-button sf-button--ghost sf-undo__remove" type="button" data-sf-remove aria-label="remove a note on spacing">remove</button>
+    </div>
+  </article>
 
-      <div class="sx-hero-specimens">
-        <div class="sx-glyph-tile">
-          <div class="sx-tile-top"><span>One family. Four weights.</span><span>Siftion UI</span></div>
-          <span class="sx-hero-glyph" data-hero-glyph aria-hidden="true">Aa</span>
-          <fieldset class="sx-hero-weights"><legend class="sx-sr-only">Hero specimen weight</legend>
-            <label><input type="radio" name="hero-weight" value="400" checked><span>400</span></label>
-            <label><input type="radio" name="hero-weight" value="500"><span>500</span></label>
-            <label><input type="radio" name="hero-weight" value="600"><span>600</span></label>
-            <label><input type="radio" name="hero-weight" value="700"><span>700</span></label>
-          </fieldset>
-        </div>
-        <button class="sx-shape-tile" type="button" data-rearrange aria-pressed="false" aria-label="Rearrange the composition">
-          <span class="sx-tile-top">Same parts. Different possibilities.</span>
-          <span class="sx-flower" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="sx-tile-bottom"><span data-rearrange-label>Rearrange</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-replay"/></svg></span>
-        </button>
-        <div class="sx-control-tile">
-          <span class="sx-small">Made for interaction.</span>
-          <p>Less looking.<br>More doing.</p>
-          <div class="sx-hero-action-wrap"><button class="sf-button sf-button--primary" type="button" data-hero-action>Try a button <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><span class="sx-small" data-hero-feedback aria-live="polite">Go ahead. It works.</span></div>
-        </div>
-      </div>
-      <nav class="sx-chapter-nav" aria-label="Explore the design system">
-        <a href="#typography"><span>01</span>Typography<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
-        <a href="#color"><span>02</span>Color<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
-        <a href="#components"><span>03</span>Components<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
-        <a href="#motion"><span>04</span>Motion<svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a>
-      </nav>
-    </section>
+  <div class="sf-undo__receipt" data-sf-receipt hidden>
+    <div class="sf-undo__content">
+      <p class="sf-undo__eyebrow">removed from reading list</p>
+      <h3 class="sf-undo__title">a note on spacing</h3>
+      <p class="sf-undo__meta">undo stays available until you restore the entry or dismiss this receipt.</p>
+    </div>
+    <div class="sf-undo__actions">
+      <button class="sf-button sf-button--primary" type="button" data-sf-restore aria-label="undo removal of a note on spacing">undo removal</button>
+      <button class="sf-button sf-button--ghost sf-undo__dismiss" type="button" data-sf-dismiss>dismiss receipt</button>
+    </div>
+  </div>
 
-    <section class="sx-shell sx-section sx-type-section" id="typography" aria-labelledby="type-title">
-      <div class="sx-section-heading"><div><p class="sx-eyebrow">01 / Typography</p><h2 id="type-title">One family.<br>Every register.</h2></div><p class="sx-description">Quiet in the details. Confident at scale.<br>Siftion UI changes its tone without changing its voice. Give it something to say.</p></div>
-      <div class="sx-type-lab">
-        <div class="sx-type-toolbar">
-          <fieldset class="sx-segmented"><legend class="sx-sr-only">Specimen font weight</legend>
-            <label><input type="radio" name="type-weight" value="400"><span>Regular</span></label><label><input type="radio" name="type-weight" value="500" checked><span>Medium</span></label><label><input type="radio" name="type-weight" value="600"><span>Semibold</span></label><label><input type="radio" name="type-weight" value="700"><span>Bold</span></label>
-          </fieldset>
-          <label class="sx-size-control" for="type-size"><span>Size <output id="type-size-output" for="type-size">116 px</output></span><input id="type-size" type="range" min="32" max="180" value="116" step="1"></label>
-          <button class="sx-icon-button" type="button" data-reset-type aria-label="Reset the type specimen"><svg class="sx-icon" aria-hidden="true"><use href="#sx-replay"/></svg></button>
-        </div>
-        <label class="sx-sr-only" for="type-specimen">Edit the type specimen</label>
-        <textarea class="sx-type-input" id="type-specimen" rows="2" maxlength="180" spellcheck="false" autocapitalize="off" aria-describedby="type-help">Make something
-worth looking at.</textarea>
-        <div class="sx-type-baseline"><span id="type-help">Click the text. Make it yours.</span><span data-type-weight-label>Medium / 500</span></div>
-      </div>
-      <div class="sx-type-roles"><div><span class="sx-small">Display</span><p class="sx-role-display">A point of view.</p></div><div><span class="sx-small">Interface</span><p class="sx-role-interface">Make the next move obvious.</p></div><div><span class="sx-small">Reading</span><p class="sx-role-reading">The best details leave room for the idea. Clear hierarchy, comfortable spacing, and a little restraint.</p></div></div>
-    </section>
+  <div class="sf-undo__empty" data-sf-undo-empty hidden>
+    <p>the reading list is empty.</p>
+    <p>the entry is still removed. reset the example to bring it back.</p>
+  </div>
 
-    <section class="sx-color-section" id="color" aria-labelledby="color-title">
-      <div class="sx-shell sx-section">
-        <div class="sx-section-heading"><div><p class="sx-eyebrow">02 / Color</p><h2 id="color-title">Give color<br>a purpose.</h2></div><p class="sx-description">A calm foundation. A few unmistakable accents. Explore the base palette, then see what each color brings to a composition.</p></div>
-        <fieldset class="sx-swatches"><legend class="sx-sr-only">Preview a color from the base palette</legend>
-          <label class="sx-swatch" style="--swatch:#efeee9;--swatch-ink:#151515"><input type="radio" name="palette" value="paper"><span class="sx-swatch-face"><span>Paper<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#EFEEE9</span></span></label>
-          <label class="sx-swatch" style="--swatch:#151515;--swatch-ink:#efeee9"><input type="radio" name="palette" value="ink"><span class="sx-swatch-face"><span>Ink<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#151515</span></span></label>
-          <label class="sx-swatch" style="--swatch:#3f4dff;--swatch-ink:#ffffff"><input type="radio" name="palette" value="signal" checked><span class="sx-swatch-face"><span>Signal<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#3F4DFF</span></span></label>
-          <label class="sx-swatch" style="--swatch:#ff6547;--swatch-ink:#151515"><input type="radio" name="palette" value="hot"><span class="sx-swatch-face"><span>Hot<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#FF6547</span></span></label>
-          <label class="sx-swatch" style="--swatch:#c9ff36;--swatch-ink:#151515"><input type="radio" name="palette" value="acid"><span class="sx-swatch-face"><span>Acid<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#C9FF36</span></span></label>
-          <label class="sx-swatch" style="--swatch:#cdbbff;--swatch-ink:#151515"><input type="radio" name="palette" value="violet"><span class="sx-swatch-face"><span>Violet<svg class="sx-icon" aria-hidden="true"><use href="#sx-check"/></svg></span><span>#CDBBFF</span></span></label>
-        </fieldset>
-        <div class="sx-color-context">
-          <div class="sx-color-stage" data-color-stage><span class="sx-small" data-color-role>Signal / Action &amp; emphasis</span><p>Make a<br>clear choice.</p><svg class="sx-stage-arrow" aria-hidden="true"><use href="#sx-diagonal"/></svg></div>
-          <div class="sx-color-details"><div><p class="sx-small">In context</p><h3 data-color-name>Signal</h3><p data-color-description>A decisive blue for the action, detail, or idea that deserves your attention.</p></div><div class="sx-token-code"><code data-color-code>--sf-signal: #3f4dff;</code><button class="sx-icon-button" type="button" data-copy-color aria-label="Copy the selected color token"><svg class="sx-icon" aria-hidden="true"><use href="#sx-copy"/></svg></button></div><div class="sx-color-footnote"><span>Preview text contrast</span><span data-color-contrast></span></div><p class="sx-fine-print">Base values stay visible in both themes. Theme-aware tokens remain unchanged.</p></div>
-        </div>
-      </div>
-    </section>
+  <div class="sf-undo__footer">
+    <p data-sf-undo-status role="status" aria-live="polite" aria-atomic="true"></p>
+    <button class="sf-button sf-button--ghost" type="button" data-sf-undo-reset hidden>reset example</button>
+  </div>
+  <p class="sf-caption">this only changes the example. your files and saved reading lists are not affected.</p>
+</div>
+              </div>
+              <div id="panel-tabs" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-tabs" tabindex="0" data-sf-tabpanel>
+                <div class="sx-component-intro"><h3>Content tabs</h3><p>Keep related content together. Each section has its own keyboard-accessible tab; without JavaScript, every section remains readable.</p></div>
+                <!-- standalone component fragment, not a page shell.
+load styles/tokens.css and styles/navigation.css.
+load scripts/navigation.js, then call SiftionNavigation.init(root).
+no showcase assets required. give every copied instance unique ids. -->
+<div class="sf-tabs" data-sf-example data-sf-tabs>
+  <div class="sf-tabs__list" data-sf-tablist role="tablist" aria-label="draft details" aria-orientation="horizontal">
+    <button class="sf-tabs__tab" id="draft-tab-overview" type="button" role="tab" data-sf-tab="overview" aria-controls="draft-panel-overview" aria-selected="true">overview</button>
+    <button class="sf-tabs__tab" id="draft-tab-notes" type="button" role="tab" data-sf-tab="notes" aria-controls="draft-panel-notes" aria-selected="false">notes</button>
+    <button class="sf-tabs__tab" id="draft-tab-history" type="button" role="tab" data-sf-tab="history" aria-controls="draft-panel-history" aria-selected="false">history</button>
+  </div>
+  <section class="sf-tabs__panel" id="draft-panel-overview" data-sf-tabpanel="overview" role="tabpanel" aria-labelledby="draft-tab-overview" tabindex="0">
+    <h3>a note on spacing</h3>
+    <p>an example draft with its supporting notes and revision history. switch sections without leaving the draft.</p>
+    <ul class="sf-nav-rows">
+      <li><span>working title</span><small>a note on spacing</small></li>
+      <li><span>format</span><small>short essay</small></li>
+    </ul>
+  </section>
+  <section class="sf-tabs__panel" id="draft-panel-notes" data-sf-tabpanel="notes" role="tabpanel" aria-labelledby="draft-tab-notes" tabindex="0">
+    <h3>notes for the next revision</h3>
+    <p>these are sample notes, not a connected editing service.</p>
+    <ul class="sf-nav-rows">
+      <li><span>shorten the opening paragraph</span><small>writing</small></li>
+      <li><span>keep the reading measure consistent</span><small>layout</small></li>
+    </ul>
+  </section>
+  <section class="sf-tabs__panel" id="draft-panel-history" data-sf-tabpanel="history" role="tabpanel" aria-labelledby="draft-tab-history" tabindex="0">
+    <h3>example revision history</h3>
+    <p>illustrative entries for this draft. no edits are recorded here.</p>
+    <ol class="sf-nav-rows">
+      <li><span>first outline</span><small>revision 01</small></li>
+      <li><span>reading notes added</span><small>revision 02</small></li>
+    </ol>
+  </section>
+  <p class="sf-navigation-note">left and right arrow keys select a section. home and end select the first and last. without javascript, all sections remain readable.</p>
+</div>
+              </div>
 
-    <section class="sx-shell sx-section" id="components" aria-labelledby="components-title">
-      <div class="sx-section-heading"><div><p class="sx-eyebrow">03 / Components</p><h2 id="components-title">Built to<br>be used.</h2></div><p class="sx-description">Honest controls, useful feedback, and room to think. These are the actual system components. Try them, then take the markup.</p></div>
-      <div class="sx-component-board">
-        <div class="sx-board-toolbar"><div class="sx-tabs" role="tablist" aria-label="Component examples"><button id="tab-buttons" type="button" role="tab" aria-selected="true" aria-controls="panel-buttons" data-tab="buttons">Buttons</button><button id="tab-inputs" type="button" role="tab" aria-selected="false" aria-controls="panel-inputs" tabindex="-1" data-tab="inputs">Inputs</button><button id="tab-states" type="button" role="tab" aria-selected="false" aria-controls="panel-states" tabindex="-1" data-tab="states">Feedback</button></div><span class="sx-small sx-board-note">Live examples</span></div>
-        <div class="sx-component-body">
-          <div class="sx-component-preview">
-            <div id="panel-buttons" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-buttons" tabindex="0">
-              <span class="sx-small">Clear choices. Different priorities.</span><div class="sf-controls sx-button-examples"><button class="sf-button sf-button--primary" type="button" data-demo-button="primary">Continue <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><button class="sf-button sf-button--signal" type="button" data-demo-button="signal">Choose this</button><button class="sf-button sf-button--ghost" type="button" data-demo-button="ghost">Maybe later</button></div><p class="sx-example-caption" data-button-feedback aria-live="polite">Try a button to inspect its markup.</p><span class="sx-small sx-keyboard-hint">Tab to focus. Enter or Space to activate.</span>
+              <div id="panel-menu" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-menu" tabindex="0" data-sf-tabpanel>
+                <div class="sx-component-intro"><h3>Action menu</h3><p>Contextual actions for an example reading list. Duplicate, archive, and restore change this local list only.</p></div>
+                <!-- standalone component fragment, not a page shell.
+load styles/tokens.css and styles/navigation.css.
+load scripts/navigation.js, then call SiftionNavigation.init(root).
+no showcase assets required. data-sf-menu-local opts into this DOM-only demo.
+give every copied instance unique ids. -->
+<div class="sf-menu" data-sf-example data-sf-menu data-sf-menu-local>
+  <div class="sf-menu__heading">
+    <h3>reading list actions</h3>
+    <p>duplicate or archive the original note in this example list. restore brings it back. nothing is sent or kept after reload.</p>
+  </div>
+  <details class="sf-menu__disclosure" data-sf-menu-disclosure>
+    <summary class="sf-menu__trigger" id="reading-menu-trigger" data-sf-menu-trigger aria-haspopup="menu" aria-controls="reading-menu-panel">note actions <span aria-hidden="true">↓</span></summary>
+    <div class="sf-menu__panel" id="reading-menu-panel" data-sf-menu-panel role="menu" aria-labelledby="reading-menu-trigger" tabindex="-1">
+      <button class="sf-menu__item" type="button" role="menuitem" data-sf-menu-item="duplicate">duplicate original</button>
+      <button class="sf-menu__item sf-menu__item--caution" type="button" role="menuitem" data-sf-menu-item="archive">archive original</button>
+      <button class="sf-menu__item" type="button" role="menuitem" data-sf-menu-item="restore" aria-disabled="true">restore original</button>
+      <hr class="sf-menu__separator" role="separator" />
+      <button class="sf-menu__item" type="button" role="menuitem" data-sf-menu-item="share" aria-disabled="true">share note <small>not connected in this local example</small></button>
+    </div>
+  </details>
+  <ul class="sf-nav-rows" data-sf-menu-list aria-label="example reading list">
+    <li data-sf-menu-record><span data-sf-menu-record-title>a note on spacing</span><small>example draft</small></li>
+  </ul>
+  <p class="sf-menu__status" role="status" aria-live="polite" aria-atomic="true" data-sf-menu-status>changes affect this example list only.</p>
+  <button class="sf-menu__reset" type="button" data-sf-menu-reset>reset example list <span aria-hidden="true">↺</span></button>
+  <p class="sf-navigation-note">arrow keys browse available actions. escape closes the menu. without javascript, note actions opens as a disclosure; list changes require javascript.</p>
+</div>
+              </div>
+</div>
+            <div class="sx-code-panel">
+              <div class="sx-source-toolbar">
+                <details class="sx-component-source">
+                  <summary>
+                    <span class="sx-small" data-snippet-label
+                      >html / primary button</span
+                    ><span aria-hidden="true">+</span>
+                  </summary>
+                  <pre><code data-component-code></code></pre>
+                  <p class="sx-small" data-component-dependencies>
+                    load tokens.css, components.css, library.css, and library.js. initialize with SiftionUI.init(root).
+                  </p>
+                </details>
+                <button
+                  class="sx-icon-button"
+                  type="button"
+                  data-copy-component
+                  aria-label="Copy component HTML"
+                >
+                  <svg class="sx-icon" aria-hidden="true">
+                    <use href="#sx-copy" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div id="panel-inputs" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-inputs" tabindex="0" hidden>
-              <form class="sx-example-form" data-example-form novalidate><label class="sf-field" for="example-name"><span class="sf-mono">Name your idea</span><input id="example-name" type="text" placeholder="Something worth making" maxlength="64" aria-describedby="example-help example-error" required></label><p id="example-help" class="sx-small">Only in this demo. Nothing is sent.</p><p class="sx-form-error" id="example-error" role="alert" hidden>Add a name first.</p><div class="sf-controls"><button class="sf-button sf-button--primary" type="submit">Save example <svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><button class="sf-button sf-button--ghost" type="reset">Reset</button></div><p class="sx-example-caption" data-form-feedback aria-live="polite"></p></form>
-            </div>
-            <div id="panel-states" class="sx-tab-panel" role="tabpanel" aria-labelledby="tab-states" tabindex="0" hidden><span class="sx-small">Meaning in words, as well as color.</span><span class="sf-status sx-status-example" data-state-preview role="status">Saved</span><fieldset class="sx-segmented sx-state-options"><legend class="sx-sr-only">Preview a feedback state</legend><label><input type="radio" name="feedback-state" value="saved" checked><span>Saved</span></label><label><input type="radio" name="feedback-state" value="attention"><span>Attention</span></label><label><input type="radio" name="feedback-state" value="waiting"><span>Waiting</span></label></fieldset></div>
           </div>
-          <div class="sx-code-panel"><div><span class="sx-small" data-snippet-label>HTML / Primary button</span><button class="sx-icon-button" type="button" data-copy-component aria-label="Copy component HTML"><svg class="sx-icon" aria-hidden="true"><use href="#sx-copy"/></svg></button></div><pre><code data-component-code>&lt;button class="sf-button
-  sf-button--primary"&gt;
-  Continue
-&lt;/button&gt;</code></pre><p class="sx-small">Existing classes. No framework required.</p></div>
         </div>
+      </section>
+
+      <section
+        class="sx-shell sx-motion-section"
+        id="motion"
+        aria-labelledby="motion-title"
+      >
+        <div class="sx-motion-copy">
+          <p class="sx-eyebrow">04 motion</p>
+          <h2 id="motion-title">Motion with<br />context.</h2>
+          <p class="sx-description">
+            Five finite transitions for grouping, text, reading order,
+            disclosure, and action. Replay or reset any example. No continuous
+            animation.
+          </p>
+          <fieldset class="sx-segmented sx-motion-speeds">
+            <legend class="sx-small">transition duration</legend>
+            <label
+              ><input type="radio" name="motion-speed" value="fast" /><span
+                >160 ms</span
+              ></label
+            ><label
+              ><input
+                type="radio"
+                name="motion-speed"
+                value="base"
+                checked
+              /><span>360 ms</span></label
+            ><label
+              ><input type="radio" name="motion-speed" value="slow" /><span
+                >760 ms</span
+              ></label
+            >
+          </fieldset>
+          <p class="sx-small sx-reduced-note">
+            reduced motion is on. changes are immediate.
+          </p>
+        </div>
+        <div
+          class="sx-motion-demo sf-split"
+          data-motion-demo
+          data-sf-split
+          data-sf-example
+        >
+          <div class="sx-motion-stage">
+            <span class="sf-caption sf-split__label"
+              >01 / Split &amp; rejoin</span
+            ><span class="sx-motion-shapes sf-split__shapes" aria-hidden="true"
+              ><i></i><i></i><i></i><i></i></span
+            ><span class="sx-small sx-motion-state" data-motion-state
+              >together</span
+            >
+          </div>
+          <div class="sx-motion-footer">
+            <button
+              class="sx-motion-trigger"
+              type="button"
+              data-motion-toggle
+              data-sf-split-toggle
+              aria-pressed="false"
+            >
+              <span data-motion-label>separate the shapes</span
+              ><svg class="sx-icon" aria-hidden="true">
+                <use href="#sx-arrow" />
+              </svg></button
+            ><button
+              class="sf-button sf-button--ghost"
+              type="button"
+              data-sf-split-reset
+            >
+              reset
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="sx-shell sx-motion-notebook">
+        <div class="sx-notebook-heading">
+          <h3>More transitions</h3>
+          <p>
+            finite transitions. interrupt freely. reduced motion skips the
+            travel.
+          </p>
+        </div>
+        <details class="sx-recipe-source" data-split-source>
+          <summary>01 / split &amp; rejoin · implementation</summary>
+          <p class="sf-caption">
+            160 / 360 / 760 ms · cubic-bezier(.2,.8,.2,1). the toggle reverses
+            the current transition; reset returns to the joined state.
+          </p>
+          <pre><code></code></pre>
+          <button
+            class="sf-button sf-button--ghost"
+            type="button"
+            data-copy-recipe
+          >
+            copy implementation
+          </button>
+        </details>
+        <article class="sx-recipe" data-recipe="reveal">
+          <div class="sx-recipe-caption">
+            <span class="sx-small">02 / motion</span>
+            <h3>Text reveal</h3>
+            <p>bring a new heading into view without hiding it from readers.</p>
+            <span class="sf-caption">360 ms / cubic-bezier(.2,.8,.2,1)</span>
+          </div>
+          <div class="sx-recipe-work">
+            <div
+              class="sf-motion-recipe"
+              data-sf-example
+              data-sf-motion="reveal"
+            >
+              <div class="sf-motion-surface">
+                <p class="sf-reveal-line">
+                  <span data-sf-motion-item>Selected work.</span>
+                </p>
+              </div>
+              <div class="sf-motion-controls">
+                <button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-play
+                >
+                  replay <span aria-hidden="true">↗</span></button
+                ><button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-reset
+                >
+                  reset</button
+                ><span class="sf-caption" role="status" data-sf-motion-status
+                  >ready</span
+                >
+              </div>
+            </div>
+            <details class="sx-recipe-source">
+              <summary>implementation &amp; dependencies</summary>
+              <p class="sf-caption">
+                load tokens.css, components.css, library.css, and library.js.
+                call SiftionUI.init(root). copied markup includes the controls.
+              </p>
+              <pre><code></code></pre>
+              <button
+                class="sf-button sf-button--ghost"
+                type="button"
+                data-copy-recipe
+              >
+                copy implementation
+              </button>
+            </details>
+          </div>
+        </article>
+        <article class="sx-recipe" data-recipe="stagger">
+          <div class="sx-recipe-caption">
+            <span class="sx-small">03 / motion</span>
+            <h3>Editorial rows</h3>
+            <p>
+              Reveal a list in reading order. Hover a row to bring it forward;
+              every item stays available.
+            </p>
+            <span class="sf-caption"
+              >360 ms + 70 ms per item / cubic-bezier(.2,.8,.2,1)</span
+            >
+          </div>
+          <div class="sx-recipe-work">
+            <div
+              class="sf-motion-recipe"
+              data-sf-example
+              data-sf-motion="stagger"
+            >
+              <div class="sf-motion-surface">
+                <ol class="sf-motion-list">
+                  <li data-sf-motion-item><span>01</span>Typography</li>
+                  <li data-sf-motion-item><span>02</span>Components</li>
+                  <li data-sf-motion-item><span>03</span>Motion</li>
+                </ol>
+              </div>
+              <div class="sf-motion-controls">
+                <button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-play
+                >
+                  replay <span aria-hidden="true">↗</span></button
+                ><button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-reset
+                >
+                  reset</button
+                ><span class="sf-caption" role="status" data-sf-motion-status
+                  >ready</span
+                >
+              </div>
+            </div>
+            <details class="sx-recipe-source">
+              <summary>implementation &amp; dependencies</summary>
+              <p class="sf-caption">
+                load tokens.css, components.css, library.css, and library.js.
+                call SiftionUI.init(root). copied markup includes the controls.
+              </p>
+              <pre><code></code></pre>
+              <button
+                class="sf-button sf-button--ghost"
+                type="button"
+                data-copy-recipe
+              >
+                copy implementation
+              </button>
+            </details>
+          </div>
+        </article>
+        <article class="sx-recipe" data-recipe="expand">
+          <div class="sx-recipe-caption">
+            <span class="sx-small">04 / motion</span>
+            <h3>Layout expansion</h3>
+            <p>
+              open the detail in place. repeat the action to reverse from its
+              current height.
+            </p>
+            <span class="sf-caption">360 ms / cubic-bezier(.2,.8,.2,1)</span>
+          </div>
+          <div class="sx-recipe-work">
+            <div
+              class="sf-motion-recipe"
+              data-sf-example
+              data-sf-motion="expand"
+            >
+              <div class="sf-motion-surface">
+                <div class="sf-expand">
+                  <h3>Implementation notes</h3>
+                  <div data-sf-expand-body id="motion-expanded-note" hidden>
+                    <p>
+                      The panel measures its content before opening. Activate
+                      the control again to reverse from the current height.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="sf-motion-controls">
+                <button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-play
+                  aria-expanded="false"
+                  aria-controls="motion-expanded-note"
+                >
+                  open / close <span aria-hidden="true">↗</span></button
+                ><button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-reset
+                >
+                  reset</button
+                ><span class="sf-caption" role="status" data-sf-motion-status
+                  >ready</span
+                >
+              </div>
+            </div>
+            <details class="sx-recipe-source">
+              <summary>implementation &amp; dependencies</summary>
+              <p class="sf-caption">
+                load tokens.css, components.css, library.css, and library.js.
+                call SiftionUI.init(root). copied markup includes the controls.
+              </p>
+              <pre><code></code></pre>
+              <button
+                class="sf-button sf-button--ghost"
+                type="button"
+                data-copy-recipe
+              >
+                copy implementation
+              </button>
+            </details>
+          </div>
+        </article>
+        <article class="sx-recipe" data-recipe="direction">
+          <div class="sx-recipe-caption">
+            <span class="sx-small">05 / motion</span>
+            <h3>Action response</h3>
+            <p>
+              A small inline arrow moves 4px on hover or keyboard focus. The
+              button stays in place.
+            </p>
+            <span class="sf-caption"
+              >200 ms hover / 360 ms replay / cubic-bezier(.2,.8,.2,1)</span
+            >
+          </div>
+          <div class="sx-recipe-work">
+            <div
+              class="sf-motion-recipe"
+              data-sf-example
+              data-sf-motion="direction"
+            >
+              <div class="sf-motion-surface">
+                <button
+                  class="sf-button sf-button--primary"
+                  type="button"
+                  data-sf-motion-item
+                >
+                  <span>View component</span
+                  ><span class="sf-button__cap" aria-hidden="true">↗</span>
+                </button>
+              </div>
+              <div class="sf-motion-controls">
+                <button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-play
+                >
+                  replay <span aria-hidden="true">↗</span></button
+                ><button
+                  class="sf-button sf-button--ghost"
+                  type="button"
+                  data-sf-reset
+                >
+                  reset</button
+                ><span class="sf-caption" role="status" data-sf-motion-status
+                  >ready</span
+                >
+              </div>
+            </div>
+            <details class="sx-recipe-source">
+              <summary>implementation &amp; dependencies</summary>
+              <p class="sf-caption">
+                load tokens.css, components.css, library.css, and library.js.
+                call SiftionUI.init(root). copied markup includes the controls.
+              </p>
+              <pre><code></code></pre>
+              <button
+                class="sf-button sf-button--ghost"
+                type="button"
+                data-copy-recipe
+              >
+                copy implementation
+              </button>
+            </details>
+          </div>
+        </article>
       </div>
-    </section>
+      <footer class="sx-footer">
+        <div class="sx-shell">
+          <div class="sx-footer-main">
+            <h2>Build with<br />Siftion UI.</h2>
+            <div>
+              <p>
+                Self-hosted type. Native controls. Reusable source.<br />Start
+                with one pattern, or download the tokens.
+              </p>
+              <a
+                class="sx-text-link"
+                href="https://github.com/sifatbhatia/sifton-design-system"
+                >explore the source
+                <svg class="sx-icon" aria-hidden="true">
+                  <use href="#sx-diagonal" /></svg></a
+              ><a class="sx-text-link" href="tokens.json" download
+                >get the tokens
+                <svg class="sx-icon" aria-hidden="true">
+                  <use href="#sx-down" /></svg
+              ></a>
+            </div>
+          </div>
+          <div class="sx-footer-bottom">
+            <a class="sx-brand" href="#top">Siftion UI</a
+            ><span>designed by sifat bhatia</span
+            ><a href="#top"
+              >back to top <span aria-hidden="true">&#8593;</span></a
+            >
+          </div>
+        </div>
+      </footer>
+    </main>
 
-    <section class="sx-shell sx-motion-section" id="motion" aria-labelledby="motion-title">
-      <div class="sx-motion-copy"><p class="sx-eyebrow">04 / Motion</p><h2 id="motion-title">A change<br>with direction.</h2><p class="sx-description">Nothing moves until you give it a reason. The same easing, at three different speeds. Press play. Feel the difference.</p><fieldset class="sx-segmented sx-motion-speeds"><legend class="sx-small">Transition duration</legend><label><input type="radio" name="motion-speed" value="fast"><span>160 ms</span></label><label><input type="radio" name="motion-speed" value="base" checked><span>360 ms</span></label><label><input type="radio" name="motion-speed" value="slow"><span>760 ms</span></label></fieldset><p class="sx-small sx-reduced-note">Reduced motion is on. Changes are immediate.</p></div>
-      <div class="sx-motion-demo" data-motion-demo><div class="sx-motion-stage"><span class="sx-motion-shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="sx-small sx-motion-state" data-motion-state>Together</span></div><div class="sx-motion-footer"><button class="sx-motion-trigger" type="button" data-motion-toggle aria-pressed="false"><span data-motion-label>Separate the shapes</span><svg class="sx-icon" aria-hidden="true"><use href="#sx-arrow"/></svg></button><span class="sx-small">Shift &amp; respond.</span></div></div>
-    </section>
-
-    <footer class="sx-footer"><div class="sx-shell"><div class="sx-footer-main"><h2>Go make<br>something yours.</h2><div><p>The foundations are here.<br>The outcome is up to you.</p><a class="sx-text-link" href="https://github.com/sifatbhatia/sifton-design-system">Explore the source <svg class="sx-icon" aria-hidden="true"><use href="#sx-diagonal"/></svg></a><a class="sx-text-link" href="tokens.json" download>Get the tokens <svg class="sx-icon" aria-hidden="true"><use href="#sx-down"/></svg></a></div></div><div class="sx-footer-bottom"><a class="sx-brand" href="#top"><span class="sx-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Siftion UI</a><span>Designed by Sifat Bhatia</span><a href="#top">Back to top <span aria-hidden="true">&#8593;</span></a></div></div></footer>
-  </main>
-
-  <div class="sx-toast" role="status" aria-live="polite" aria-atomic="true" data-toast></div>
-  <dialog class="sx-copy-dialog" data-copy-dialog aria-labelledby="copy-dialog-title"><div><h2 id="copy-dialog-title">Copy this snippet</h2><button class="sx-icon-button" type="button" data-close-dialog aria-label="Close copy dialog"><svg class="sx-icon" aria-hidden="true"><use href="#sx-close"/></svg></button></div><p>Clipboard access is unavailable. Select and copy the text below.</p><label class="sx-sr-only" for="manual-copy">Snippet to copy</label><textarea id="manual-copy" rows="8" readonly></textarea><button class="sf-button sf-button--primary" type="button" data-close-dialog>Done</button></dialog>
-  <noscript><p class="sx-noscript">The system is here to explore. Turn on JavaScript to use the live controls, theme switch, and copy buttons.</p></noscript>
-</body>
+    <div
+      class="sx-toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-toast
+    ></div>
+    <dialog
+      class="sx-copy-dialog"
+      data-copy-dialog
+      aria-labelledby="copy-dialog-title"
+    >
+      <div>
+        <h2 id="copy-dialog-title">copy this snippet</h2>
+        <button
+          class="sx-icon-button"
+          type="button"
+          data-close-dialog
+          aria-label="Close copy dialog"
+        >
+          <svg class="sx-icon" aria-hidden="true"><use href="#sx-close" /></svg>
+        </button>
+      </div>
+      <p>clipboard access is unavailable. select and copy the text below.</p>
+      <label class="sx-sr-only" for="manual-copy">snippet to copy</label
+      ><textarea id="manual-copy" rows="8" readonly></textarea
+      ><button
+        class="sf-button sf-button--primary"
+        type="button"
+        data-close-dialog
+      >
+        done
+      </button>
+    </dialog>
+    <noscript
+      ><p class="sx-noscript">
+        the specimens and native choices work without scripts. enable javascript
+        for validation, dialogs, replay, and copying.
+      </p></noscript
+    >
+  </body>
 </html>

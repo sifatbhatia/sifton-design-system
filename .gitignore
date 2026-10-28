@@ -1,0 +1,14 @@
+# Local dependencies and Python cache
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Recoverable local work and generated review evidence
+backups/
+verification/
+font-src/verification/
+
+# Local editor and OS state
+.DS_Store
+Thumbs.db

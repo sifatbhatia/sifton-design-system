@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>component direction | siftion</title><link rel="stylesheet" href="styles/component-direction.css"><script src="scripts/component-direction.js" defer></script></head>
+<body>
+<header class="masthead"><a href="index.html" class="back">← siftion</a><span class="study">component direction study</span><details class="index"><summary aria-label="page index"><span class="index-label">index</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><nav aria-label="page index"><a href="#brief">the brief <span>01</span></a><a href="#scope">the scope <span>02</span></a><a href="#construction">the construction <span>03</span></a></nav></details></header>
+<main>
+<details class="brief" id="brief" open>
+<summary class="hero-action"><span class="side-note">01 / begin here</span><h1>website<br><span class="second-line">brief.</span></h1><span class="action-end"><span class="action-label"><span class="closed-copy">open brief</span><span class="open-copy">close brief</span></span><span class="cross" aria-hidden="true"></span></span></summary>
+<div class="brief-body" id="scope">
+<div class="brief-context"><span class="small-label">a place to start</span><h2>what needs<br>to change?</h2><p>choose the work, then keep a copy of this brief. nothing is sent.</p><div class="selected-note"><span class="small-label">in this brief</span><output id="selection">a complete website</output></div></div>
+<form class="scope-form">
+<fieldset><legend>choose the scope</legend>
+<label class="scope-row"><input type="radio" name="scope" value="a complete website" checked><span class="choice-mark" aria-hidden="true"></span><span class="choice-text">a complete<br>website<small>structure, design & build</small></span><span class="row-number" aria-hidden="true">01</span></label>
+<label class="scope-row"><input type="radio" name="scope" value="a sharper identity"><span class="choice-mark" aria-hidden="true"></span><span class="choice-text">a sharper identity<small>type, colour & a visual language</small></span><span class="row-number" aria-hidden="true">02</span></label>
+<label class="scope-row"><input type="radio" name="scope" value="one important page"><span class="choice-mark" aria-hidden="true"></span><span class="choice-text">one important page<small>a launch, a release or a new idea</small></span><span class="row-number" aria-hidden="true">03</span></label>
+</fieldset>
+<div class="brief-bottom"><button type="button" id="copy" hidden>copy this brief <span class="copy-icon" aria-hidden="true"></span></button><p role="status" id="status">a complete website selected.</p></div>
+<noscript><style>.selected-note,#status{display:none}</style><p>your selection stays on this page. copy the scope text to keep it.</p></noscript>
+</form>
+</div></details>
+<footer id="construction"><p>one surface. navigation, disclosure & selection.</p><details class="construction"><summary>view construction <span aria-hidden="true">+</span></summary><div><p>native details and radio inputs. one local clipboard action. no account, no submission.</p><a href="styles/component-direction.css">stylesheet ↗</a><a href="scripts/component-direction.js">interaction source ↗</a><pre><code>&lt;details open&gt;
+  &lt;summary&gt;website brief.&lt;/summary&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;choose the scope&lt;/legend&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="scope"&gt;
+      a complete website
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/details&gt;</code></pre></div></details></footer>
+</main>
+</body></html>
